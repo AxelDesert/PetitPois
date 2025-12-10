@@ -30,8 +30,6 @@ print(f"{RED}id:{RESET}", f"{stdout_id}{RESET}")
 print(" ")
 print(f"{RED}groups:{RESET}", f"{stdout_groups}{RESET}")
 
-print()
-
 #Vérification root 
 is_root = (os.geteuid() == 0)
 
@@ -49,3 +47,10 @@ if "sudo" in groups:
     print(f"{RED}L'utilisateur est dans le groupe sudo.{RESET}")
 else:
     print(f"{RED}Utilisateur sans accès sudo.{RESET}")
+
+#vérification groupe docker
+
+if "docker" in groups:
+    print(f"{RED}L'utilisateur est dans le groupe docker. {RESET}")
+else:
+    print(f"{RED}Utilisateur sans accès docker.{RESET}")
