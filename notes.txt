@@ -1,9 +1,5 @@
-sudo -l
-whoami; id; groups
-ll /opt /mnt /srv /home /var/backups
-check /root
-find -perm 
-getcap -r / 2>/dev/null
-ss -tulnp + check les ports non conventionnels
-showmount -e <IP>
+sudo -l ->KYO
+ll /opt /mnt /srv /home /var/backups -> ADAM 
+ss -tulnp + check les ports non conventionnels -> VICTOR
+showmount -e <IP> 
 linux ping sweep
