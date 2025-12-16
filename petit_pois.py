@@ -19,7 +19,7 @@ __________        __  .__  __                  .__
     print("4. ALL")
     
     try:
-        choix = input("\nVotre choix : \n")
+        choix = input("\nVotre choix : ")
 
         if choix == "1":
             capabilities.getcap()

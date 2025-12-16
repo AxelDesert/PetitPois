@@ -1,6 +1,7 @@
 import subprocess
 
 def getcap():
+    print("\nResult of getcap since root :\n")
     capabilities = subprocess.run(["getcap", "-r", "/"], stderr=subprocess.DEVNULL, stdout=subprocess.PIPE, text=True)
     lines = []
     lenth_filepath = 0
@@ -22,7 +23,6 @@ def getcap():
             
     padding = lenth_filepath
 
-    print("Result of getcap since root :\n")
     print(f"{'FILES':<{padding}} | CAPABILITIES")
     print("-" * (padding + lenth_filepath + lenth_caps))
 
