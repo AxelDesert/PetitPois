@@ -1,7 +1,10 @@
 import subprocess
 import os
 
+from modules import utils
+
 def whoami():
+    utils.print_section_header("CURRENT USER INFORMATION")
     RED = "\033[31m"
     RESET = "\033[0m"
 
@@ -22,25 +25,25 @@ def whoami():
     stdout_groups, stderr_groups, code_groups = run_cmd(["groups"])
 
     print(" ")
-    print(f"{RED}whoami:{RESET}", f"{stdout_user}{RESET}")
+    print(f"whoami: {stdout_user}")
     print(" ")
-    print(f"{RED}id:{RESET}", f"{stdout_id}{RESET}")
+    print(f"id: {stdout_id}")
     print(" ")
-    print(f"{RED}groups:{RESET}", f"{stdout_groups}{RESET}")
+    print(f"groups: {stdout_groups}")
 
     is_root = (os.geteuid() == 0)
     if is_root:
-        print(f"{RED}Exécution en tant que root.{RESET}")
+        print(f"{utils.RED}Exécution en tant que root.{utils.RESET}")
     else:
-        print(f"{RED}Exécution sans privilèges élevés.{RESET}")
+        print(f"Exécution sans privilèges élevés.")
     print()
     
     groups = stdout_groups.split()
     if "sudo" in groups:
-        print(f"{RED}L'utilisateur est dans le groupe sudo.{RESET}")
+        print(f"{utils.RED}L'utilisateur est dans le groupe sudo.{utils.RESET}")
     else:
-        print(f"{RED}Utilisateur sans accès sudo.{RESET}")
+        print(f"Utilisateur sans accès sudo.")
     if "docker" in groups:
-        print(f"{RED}L'utilisateur est dans le groupe docker. {RESET}")
+        print(f"{utils.RED}L'utilisateur est dans le groupe docker.{utils.RESET}")
     else:
-        print(f"{RED}Utilisateur sans accès docker.{RESET}")
+        print(f"Utilisateur sans accès docker.")

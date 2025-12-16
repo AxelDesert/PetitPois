@@ -1,8 +1,10 @@
 import subprocess
 import os
 
+from modules import utils
+
 def find_suid_exploits():
-    print("\n--- Scanning for SUID Binaries ---")
+    utils.print_section_header("SUID BINARY ANALYSIS")
     try:
         # Run find command
         cmd = ["find", "/", "-user", "root", "-perm", "-4000", "-type", "f"]
@@ -40,9 +42,9 @@ def find_suid_exploits():
             matches = [path for path, name in found_suids if name in exploitable_names]
             
             if matches:
-                 print("\n\033[31m[!] POTENTIALLY EXPLOITABLE SUID BINARIES FOUND:\033[0m")
+                 print(f"\n{utils.RED}[!] POTENTIALLY EXPLOITABLE SUID BINARIES FOUND:{utils.RESET}")
                  for match in matches:
-                     print(f"    {match}")
+                     print(f"    {utils.RED}{match}{utils.RESET}")
             else:
                 print("\nNo known exploitable SUID binaries found from the list.")
         else:

@@ -1,7 +1,9 @@
 import socket
 
+from modules import utils
+
 def scan_ports():
-    print("\n--- Local Port Scan (Common Ports) ---")
+    utils.print_section_header("LOCAL PORT SCAN")
     try:
         # Try to resolve hostname to IP
         hostname = socket.gethostname()
@@ -21,7 +23,7 @@ def scan_ports():
             s.settimeout(0.5)
             # connect_ex returns 0 on success
             if s.connect_ex((IPAddr, port)) == 0:
-                print(f"Port {port:<5} : OPEN")
+                print(f"Port {port:<5} : {utils.RED}OPEN{utils.RESET}")
                 found_any = True
             s.close()
         except:

@@ -1,7 +1,9 @@
 import subprocess
 
+from modules import utils
+
 def getcap():
-    print("\nResult of getcap since root :\n")
+    utils.print_section_header("SYSTEM CAPABILITIES (getcap)")
     capabilities = subprocess.run(["getcap", "-r", "/"], stderr=subprocess.DEVNULL, stdout=subprocess.PIPE, text=True)
     lines = []
     lenth_filepath = 0
@@ -27,5 +29,5 @@ def getcap():
     print("-" * (padding + lenth_filepath + lenth_caps))
 
     for chemin, caps in lines:
-        print(f"{chemin:<{padding}} | {caps}")
+        print(f"{chemin:<{padding}} | {utils.RED}{caps}{utils.RESET}")
     print("\n")
